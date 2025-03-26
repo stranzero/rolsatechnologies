@@ -1,7 +1,7 @@
 :root {
-    --primary-color: #3EE07F; /* Bright green from wireframes */
+    --primary-color: #3EE07F; 
     --primary-dark: #2BB866;
-    --secondary-color: #1A1A1A; /* Dark background */
+    --secondary-color: #1A1A1A; 
     --text-light: #FFFFFF;
     --text-dark: #1A1A1A;
     --background-dark: #121212;
@@ -37,7 +37,7 @@
 }
 
 [data-theme="light"] {
-    --primary-color: #2BB866; /* Slightly darker green for better contrast */
+    --primary-color: #2BB866; 
     --primary-dark: #1A9955;
     --secondary-color: #F5F5F5;
     --text-light: #333333;
@@ -46,7 +46,6 @@
     --background-light: #F5F5F5;
     --border-color: #E0E0E0;
     
-    /* Shadows for light mode */
     --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.08);
     --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
@@ -224,7 +223,7 @@ img {
     gap: var(--spacing-md);
 }
 
-/* ===== HERO SECTION ===== */
+/* ===== GRID SECTION ===== */
 .hero-section {
     margin-top: var(--spacing-xl);
     padding: var(--spacing-xl) 0;
@@ -257,6 +256,60 @@ img {
 
 .grid-item.large {
     grid-row: span 2;
+}
+
+.grid-item.small {
+    grid-row: span 1;
+    grid-column: span 1;
+}
+
+.grid-item input {
+    width: 100%;
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    border: none;
+    border-radius: var(--border-radius-sm);
+}
+/* ===== Carbon Calculator ===== */
+.scrollcontainer-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    max-height: 100%;
+    overflow: hidden;
+    width: 100%;
+}
+
+.scrollcontainer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background-color: var(--background-dark);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    overflow-y: auto;
+    max-height: 300px;
+}
+
+.scrollcontainer h3 {
+    color: var(--text-light);
+}
+
+.scrollcontainer::-webkit-scrollbar {
+    width: 8px;
+    
+}
+
+.scrollcontainer::-webkit-scrollbar-thumb {
+    background-color: var(--background-light);
+    border-radius: var(--border-radius-sm);
+}
+
+.scrollcontainer-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--spacing-sm);
 }
 
 /* ===== FEATURED PRODUCTS ===== */

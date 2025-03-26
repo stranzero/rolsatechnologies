@@ -29,4 +29,9 @@ include_once("../includes/header.php");
                 <h2>Switch to Renewable Energy</h2>
                 <p>Switching to renewable energy sources like solar and wind power can help reduce your carbon footprint and save you money.</p>
             </div>
+            <div class="grid-item small">
+                <h2>Switch to Renewable Energy</h2>
+                <p>Switching to renewable energy sources like solar and wind power can help reduce your carbon footprint and save you money.</p>
+            </div>
 </section>
+</main>

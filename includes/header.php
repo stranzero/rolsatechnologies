@@ -45,8 +45,8 @@ $base_path = getBasePath();
                 <a href="<?php echo $base_path; ?>pages/account.php" class="account-icon">
                     <span class="icon"><i class="fas fa-user"></i></span>
                 </a>
-                <a href="<?php echo $base_path; ?>pages/installation.php" class="btn btn-primary">
-                    <i class="fas fa-tools"></i> Book an Installation
+                <a href="<?php echo $base_path; ?>pages/schedule.php" class="btn btn-primary">
+                    <i class="fas fa-tools"></i> Schedule an Appointment
                 </a>
             </div>
         </div>
