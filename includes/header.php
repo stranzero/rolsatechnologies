@@ -39,8 +39,8 @@ $base_path = getBasePath();
                 </ul>
             </nav>
             <div class="header-actions">
-                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
-                    <i class="fas fa-sun"></i>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+            <span class="theme-toggle-icon"><i class="fas fa-sun"></i></span>
                 </button>
                 <a href="<?php echo $base_path; ?>pages/account.php" class="account-icon">
                     <span class="icon"><i class="fas fa-user"></i></span>
@@ -49,11 +49,38 @@ $base_path = getBasePath();
                     <i class="fas fa-tools"></i> Book an Installation
                 </a>
             </div>
-
         </div>
-
     </header>
-    
+    <script>
+        // Light and Dark Mode
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = themeToggle.querySelector('.theme-toggle-icon i');
+            const htmlElement = document.documentElement;
+            
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            htmlElement.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+            
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = htmlElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                htmlElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateThemeIcon(newTheme);
+            });
+            
+            // Update icon based on current theme
+            function updateThemeIcon(theme) {
+                if (theme === 'dark') {
+                    themeIcon.className = 'fas fa-sun';
+                } else {
+                    themeIcon.className = 'fas fa-moon';
+                }
+            }
+        });
+    </script>    
 </body>
 </html>
 

@@ -10,18 +10,16 @@ ini_set('display_startup_errors', 1);
 
 // Get Base Path for assets
 function getBasePath() {
-    $path = dirname($_SERVER['PHP_SELF']);
-    
-    if ($path == '/') {
-        return '';
+    $path = trim(dirname($_SERVER['PHP_SELF']), '/'); 
+    $depth = substr_count($path, '/'); // 
+
+    if ($depth == 0) {
+        return './'; // 
     }
 
-    $depth = substr_count($path,'/');
-    if ($depth == 0) {
-        return str_repeat('../', $depth - 1);
-    }
-    return '';
+    return str_repeat('../', $depth); 
 }
+
 
 ?>
 
