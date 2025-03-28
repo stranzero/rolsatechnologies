@@ -5,3 +5,4 @@
 [*] Finish the Light and Dark Mode
 [] Work on the Login/Register Pages (HTML)
 [*] Work on the Carbon and Energy Pages (HTML)
+[] Fix Login Page and Make a start on the Register Page

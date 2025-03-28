@@ -27,11 +27,7 @@ include_once("includes/header.php");
             </div>
         </div>
     </section>
-
-    <section class="featured-products">
-        <h2>Featured Products</h2>
-        <div class="product-carousel">
-            <!-- they will be added dynamically -->
-        </div>
-    </section>
 </main>
+<?php
+// include the footer (this essentially just initiates the JS scripts)
+include_once("includes/footer.php"); ?>

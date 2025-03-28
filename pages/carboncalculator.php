@@ -1,5 +1,39 @@
 <?php
 include_once("../includes/header.php");
+
+$totalCarbonFootprint = 0;
+$carbonTrajectory = +0;
+
+// carbonFootprintHistory = [
+    //     {
+    //         date: '2021-09-01',
+    //         emissions: 65
+    //     },
+    //     {
+    //         date: '2021-09-02',
+    //         emissions: 59
+    //     },
+    //     ...
+    // ]
+class CarbonFootprintData
+{
+    public $date;
+    public $emissions;
+
+    public function __construct($date, $emissions)
+    {
+        $this->date = $date;
+        $this->emissions = $emissions;
+    }
+}
+// Temporary Data for Carbon Footprint - This will be replaced by data from mysql database when we implement it
+$Data1 = new CarbonFootprintData('2021-09-01', 65);
+$Data2 = new CarbonFootprintData('2021-09-02', 59);
+$Data3 = new CarbonFootprintData('2021-09-03',20);
+
+$carbonFootprintData = array($Data1, $Data2, $Data3);
+// send data to local storage
+echo "<script>localStorage.setItem('carbonFootprintData', JSON.stringify(" . json_encode($carbonFootprintData) . "))</script>";
 ?>
 
 <main class="container">
@@ -11,11 +45,11 @@ include_once("../includes/header.php");
     <div class="grid-container">
         <div class="grid-item small">
             <h2>Total Emissions</h2>
-            <p id="total-emissions">0 CO2e</p>
+            <p id="total-emissions"><?php echo $totalCarbonFootprint; ?> kg CO2e</p>
         </div>
         <div class="grid-item small">
             <h2>Trajectory</h2>
-            <p id="trajectory">+0 CO2e</p>
+            <p id="trajectory"><?php echo $carbonTrajectory; ?>%</p>
         </div>
         <div class="grid-item small">
             <div class="scrollcontainer-wrapper">
@@ -44,3 +78,5 @@ include_once("../includes/header.php");
             <canvas id="emissions-chart"></canvas>
     </div>
 </main>
+<?php
+include_once("../includes/footer.php"); ?>

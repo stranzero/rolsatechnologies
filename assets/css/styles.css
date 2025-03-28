@@ -270,6 +270,11 @@ img {
     border: none;
     border-radius: var(--border-radius-sm);
 }
+
+.grid-item.span {
+    grid-column: span 2;
+    grid-row: span 2;
+}
 /* ===== Carbon Calculator ===== */
 .scrollcontainer-wrapper {
     display: flex;
@@ -329,6 +334,49 @@ img {
     overflow-x: auto;
     padding: var(--spacing-md) 0;
 }
+
+.product-card {
+    background-color: var(--background-dark);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    width: 300px;
+}
+/* ===== Login/Register ===== */
+.login-gridcontainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-xl) 0;
+}
+
+.login-griditem {
+    background-color: var(--primary-color);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--text-dark);
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    width: 100%;
+}
+
+
+
+
+/* ===== MISCELLANEOUS ===== */
 
 @media (max-width: 768px) {
     .grid-container {

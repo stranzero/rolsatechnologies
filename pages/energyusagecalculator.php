@@ -1,5 +1,41 @@
 <?php
 include_once("../includes/header.php");
+
+$totalEnergyUsage = 0;
+$totalMoneySaved = 0.00;
+
+// energyUsageData = [
+    //     {
+    //         date: '2021-09-01',
+    //         energyUsage: 65
+    //     },
+    //     {
+    //         date: '2021-09-02',
+    //         energyUsage: 59
+    //     },
+    //     ...
+    // ]
+class EnergyUsageData
+{
+    public $date;
+    public $energyUsage;
+
+    public function __construct($date, $energyUsage)
+    {
+        $this->date = $date;
+        $this->energyUsage = $energyUsage;
+    }
+}
+// Temporary Data for Energy Usage - This will be replaced by data from mysql database when we implement it
+$Data1 = new EnergyUsageData('2021-09-01', 65);
+$Data2 = new EnergyUsageData('2021-09-02', 59);
+$Data3 = new EnergyUsageData('2021-09-03',20);
+
+$energyUsageData = array($Data1, $Data2, $Data3);
+// send data to local storage
+echo "<script>localStorage.setItem('energyUsageData', JSON.stringify(" . json_encode($energyUsageData) . "))</script>";
+
+
 ?>
 
 <main class="container">
@@ -11,12 +47,12 @@ include_once("../includes/header.php");
     <div class="grid-container">
         <div class="grid-item small">
             <h2>Total Energy Usage</h2>
-            <p id="total-energy-usage">0 kWh</p>
+            <p id="total-energy-usage"><?php echo $totalEnergyUsage; ?> kWh</p>
         </div>
 
         <div class="grid-item small">
             <h2>Total Money Saved</h2>
-            <p id="total-money-saved">£0</p>
+            <p id="total-money-saved">£<?php echo $totalMoneySaved; ?></p>
         </div>
 
        <div class="grid-item small">
@@ -34,3 +70,5 @@ include_once("../includes/header.php");
         </div>
     </div>
 </main>
+<?php
+include_once("../includes/footer.php"); ?>

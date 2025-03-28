@@ -11,5 +11,7 @@ include_once("../includes/header.php");
     <section class="account-section">
        <!-- Follow the wireframe to create the account page -->
     </section>
-    
 </main>
+
+<?php
+include_once("../includes/footer.php"); ?>
