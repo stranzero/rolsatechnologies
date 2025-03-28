@@ -166,21 +166,18 @@ img {
 }
 
 .btn-secondary {
-    background: linear-gradient(135deg, #333, #222);
+    background: linear-gradient(135deg, var(--secondary-color), #222);
     color: var(--text-light);
     border: 1px solid var(--primary-color);
+    transition: background-color var(--transition-speed), color var(--transition-speed);
 }
 
-.btn-secondary:hover {
-    background: linear-gradient(135deg, #222, #333);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+[data-theme="light"] .btn-secondary {
+    background: linear-gradient(135deg, #E0E0E0, #F5F5F5);
+    color: #1A1A1A;
+    border: 1px solid var(--primary-dark);
 }
 
-.btn-secondary:active {
-    transform: translateY(0);
-    box-shadow: var(--shadow-sm);
-}
 
 /* ===== HEADER ===== */
 .site-header {
@@ -266,9 +263,10 @@ img {
 .grid-item input {
     width: 100%;
     padding: var(--spacing-sm);
-    margin-bottom: var(--spacing-md);
-    border: none;
+    margin-top: var(--spacing-sm);
+    border: 1px solid var(--border-color);
     border-radius: var(--border-radius-sm);
+    background-color: var(--background-light);
 }
 
 .grid-item.span {
@@ -372,8 +370,6 @@ img {
     gap: var(--spacing-md);
     width: 100%;
 }
-
-
 
 
 /* ===== MISCELLANEOUS ===== */

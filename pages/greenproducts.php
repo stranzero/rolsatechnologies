@@ -8,11 +8,7 @@ include_once("../includes/header.php");
         <p>Discover our range of sustainable energy solutions that help reduce your carbon footprint and save you money.</p>
     </section>
 
-    <section class="greenproducts-section">
-        <div class="grid-container">
-            <!-- WIP: Need to add Products here -->
-        </div>
-    </section>
+   
 </main>
 <?php
 include_once("../includes/footer.php"); ?>

@@ -11,22 +11,50 @@ include_once("../includes/header.php");
     <section class="schedule-section">
         <div class="grid-container">
             <div class="grid-item small">
-                <form action="<?php echo $base_path; ?>src/schedule.php" method="post">
+                <form class="schedule-form" action="<?php echo $base_path; ?>src/schedule.php" method="post">
                     <h2>Schedule Consultation</h2>
                     <h3>Type and Availability</h3>
                     <h4>Appointment Type</h4>
                     <select name="appointment-type" id="appointment-type">
+                        <option value="" selected disabled hidden>Choose here</option>
                         <option value="consultation">Consultation</option>
                         <option value="installation">Installation</option>
                     </select>
-                    <h4>Date</h4>
-                    <input type="date" name="appointment-date" id="appointment-date">
-                    <!-- Add the rest using JavaScript -->
+                    <h4>Date and Time</h4>
+                    <input type="date" id="appointment-date" name="appointment-date" required>
+                    <input type="time" id="appointment-time" name="appointment-time" required>
+
+                    <!-- Consultation Questions -->
+                    <div id="consultation-questions" style="display: none;">
+                        <h4>Consultation Details</h4>
+                        <textarea name="consultation-details" placeholder="Provide details about the consultation" rows="4"></textarea>
+                    </div>
+
+                    <!-- Installation Questions -->
+                    <div id="installation-questions" style="display: none;">
+                        <h4>Installation Details</h4>
+                        <textarea name="installation-details" placeholder="Provide details about the installation" rows="4"></textarea>
+                        <h4>Address</h4>
+                        <input type="text" name="address" placeholder="Enter your address">
+                        <h4>City</h4>
+                        <input type="text" name="city" placeholder="Enter your city">
+                        <h4>Postcode</h4>
+                        <input type="text" name="postcode" placeholder="Enter your postcode">
+                    </div>
+
                     <button id="schedule-consultation" class="btn btn-primary">Schedule</button>
                 </form>
+            </div>
+            <div class="grid-item small">
+                <h2>Upcoming Appointments</h2>
+                <ul id="upcoming-appointments">
+                    <!-- Appointments will be added here -->
+                </ul>
             </div>
         </div>
     </section>
 </main>
+
 <?php
-include_once("../includes/footer.php"); ?>
+include_once("../includes/footer.php");
+?>
