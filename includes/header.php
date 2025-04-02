@@ -20,7 +20,12 @@ $base_path = getBasePath();
     <!-- Add Font Awesome for better icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Add Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Condiment&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .sitename_rolsa {
+            font-family: 'Condiment', cursive;
+        }
+    </style>
     <title><?php echo $site_name; ?></title>
 </head>
 <body>
@@ -28,7 +33,7 @@ $base_path = getBasePath();
         <div class="container">
             <div class="site-logo">
                 <a href="<?php echo $base_path; ?>index.php">
-                    <h1><i class="fas fa-leaf"></i><?php echo $site_name; ?></h1>
+                    <h1 class="sitename_rolsa"><i class="fas fa-leaf"></i><?php echo $site_name; ?></h1>
                 </a>
             </div>
             <nav class="main-nav">

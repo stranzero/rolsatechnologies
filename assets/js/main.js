@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
     energyUsageTracker();
     carbonFootprintCalculator();
     scheduleForm();
+    totalEnergyMoneySaved();
+    carbonTrajectory();
 });
 
 // Energy Usage Tracker
@@ -200,4 +202,57 @@ function scheduleForm() {
             installationQuestions.style.display = 'none';
         }
     });
+}
+
+function totalEnergyMoneySaved() {
+    if (document.getElementById('total-money-saved') === null) {
+        return;
+    }
+
+    if (localStorage.getItem('energyUsageData') === null) {
+        console.log('No energy usage data found in local storage.');
+        return;
+    }
+
+    const generalEnergyCost = 24.50; // £ per kWh
+    const energyUsageData = localStorage.getItem('energyUsageData');
+    if (!energyUsageData) return;
+
+    const energyUsage = JSON.parse(energyUsageData);
+    if (energyUsage.length < 2) return; // Ensure there are at least two data points
+
+    const lastUsage = energyUsage[energyUsage.length - 2].energyUsage;
+    const newestUsage = energyUsage[energyUsage.length - 1].energyUsage;
+
+    const usageDifference = newestUsage - lastUsage;
+    const moneySaved = usageDifference * generalEnergyCost;
+
+    const totalEnergySavedElement = document.getElementById('total-money-saved');
+    if (totalEnergySavedElement) {
+        totalEnergySavedElement.innerText = `${moneySaved <= 0 ? '+' : '-'}£${Math.abs(moneySaved).toFixed(2)}`;
+    }
+}
+
+function carbonTrajectory() {
+    if (document.getElementById('trajectory') === null) {
+        return;
+    }
+
+    const carbonFootprintData = localStorage.getItem('carbonFootprintData');
+    if (!carbonFootprintData) return;
+
+    const carbonFootprint = JSON.parse(carbonFootprintData);
+    if (carbonFootprint.length < 2) return; // Ensure there are at least two data points
+
+    const lastFootprint = carbonFootprint[carbonFootprint.length - 2].emissions;
+    const newestFootprint = carbonFootprint[carbonFootprint.length - 1].emissions;
+
+    // Calculate percentage change difference to the last footprint
+    const footprintDifference = newestFootprint - lastFootprint;
+    const trajectoryValue = (footprintDifference / lastFootprint) * 100;
+
+    const trajectoryText = document.getElementById('trajectory');
+    if (trajectoryText) {
+        trajectoryText.innerText = `${trajectoryValue <= 0 ? '+' : '-'}${Math.abs(trajectoryValue).toFixed(2)}%`;
+    }
 }

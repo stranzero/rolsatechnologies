@@ -49,7 +49,7 @@ echo "<script>localStorage.setItem('carbonFootprintData', JSON.stringify(" . jso
         </div>
         <div class="grid-item small">
             <h2>Trajectory</h2>
-            <p id="trajectory"><?php echo $carbonTrajectory; ?>%</p>
+            <p id="trajectory">0%</p>
         </div>
         <div class="grid-item small">
             <div class="scrollcontainer-wrapper">

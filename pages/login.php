@@ -5,7 +5,7 @@ include_once("../includes/header.php");
 <main class="container">
     <section class="page-header">
         <h1>Login</h1>
-        <p>Calculate your energy usage as well as your carbon footprint.</p>
+        <p>Welcome back! Please log in to your account.</p>
     </section>
 
     <div class="login-gridcontainer">

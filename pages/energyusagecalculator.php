@@ -1,8 +1,6 @@
 <?php
 include_once("../includes/header.php");
 
-$totalEnergyUsage = 0;
-$totalMoneySaved = 0.00;
 
 // energyUsageData = [
     //     {
@@ -47,12 +45,12 @@ echo "<script>localStorage.setItem('energyUsageData', JSON.stringify(" . json_en
     <div class="grid-container">
         <div class="grid-item small">
             <h2>Total Energy Usage</h2>
-            <p id="total-energy-usage"><?php echo $totalEnergyUsage; ?> kWh</p>
+            <p id="total-energy-usage">0kWh</p>
         </div>
 
         <div class="grid-item small">
             <h2>Total Money Saved</h2>
-            <p id="total-money-saved">£<?php echo $totalMoneySaved; ?></p>
+            <p id="total-money-saved">£0.00</p>
         </div>
 
        <div class="grid-item small">
