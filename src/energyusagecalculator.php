@@ -59,6 +59,7 @@ if ($result->num_rows > 0) {
     $updateStmt->bind_param("isi", $totalUsage, $allRecordsJson, $userID);
     if ($updateStmt->execute()) {
         $updateStmt->close();
+        $stmt->close();
         header("Location: ../pages/energyusagecalculator.php");
         exit;
     } else {
@@ -79,13 +80,12 @@ if ($result->num_rows > 0) {
     $insertStmt->bind_param("iis", $userID, $energyUsage, $allRecordsJson);
     if ($insertStmt->execute()) {
         $insertStmt->close();
+        $stmt->close();
+        $conn->close();
         header("Location: ../pages/energyusagecalculator.php");
         exit;
     } else {
         die("Error inserting record: " . $insertStmt->error);
     }
 }
-
-$stmt->close();
-$conn->close();
 ?>

@@ -39,6 +39,7 @@ if (isset($_SESSION["UserID"])) {
                 <h2>Account Functions</h2>
                 <p><a href="../src/delete_account.php" class="btn btn-primary">Delete Account</a></p>
                 <p><a href="../src/logout.php" class="btn btn-secondary">Logout</a></p>
+                <p><a href="../src/clear_data.php" class="btn btn-secondary">Clear Data</a></p>
             </div>
         </div>
     </section>

@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loaded with JavaScript');
     energyUsageTracker();
     carbonFootprintCalculator();
     scheduleForm();
@@ -131,7 +130,7 @@ function carbonFootprintCalculator() {
     }
 
     let chartColors = {
-        textColor: '#fff', // 
+        textColor: '#fff',
         gridColor: 'rgba(255, 255, 255, 0.2)', 
         borderColor: '#FFFFFF', 
         backgroundColor: 'rgba(255, 255, 255, 0.1)', 

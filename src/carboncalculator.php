@@ -10,10 +10,11 @@ if (!isset($_SESSION["UserID"])) {
 }
 
 // Get form details
-$electricityEmissions = $_POST['electricityEmissions'] ?? 0;
-$transportEmissions = $_POST['transportEmissions'] ?? 0;
-$foodEmissions = $_POST['foodEmissions'] ?? 0;
-$wasteEmissions = $_POST['wasteEmissions'] ?? 0;
+// Ensure all inputs are cast to numbers to avoid empty string issues
+$electricityEmissions = (float)($_POST['electricityEmissions'] ?? 0);
+$transportEmissions = (float)($_POST['transportEmissions'] ?? 0);
+$foodEmissions = (float)($_POST['foodEmissions'] ?? 0);
+$wasteEmissions = (float)($_POST['wasteEmissions'] ?? 0);
 
 $totalEmissions = $electricityEmissions + $transportEmissions + $foodEmissions + $wasteEmissions;
 
@@ -93,4 +94,3 @@ if ($result->num_rows > 0) {
     }
 }
 ?>
-
