@@ -10,20 +10,14 @@ include_once("../includes/header.php");
 
     <section class="account-section">
         <div class="grid-container">
-            <!-- Top row with 3 columns -->
-            <div class="grid-item">
-                <h2>Energy Saved</h2>
-                <p id="energy-saved">0 kWh</p>
-            </div>
             <div class="grid-item">
                 <h2>Carbon Reduction</h2>
-                <p id="carbon-reduction">0 kg</p>
+                <p id="trajectory">0 kg</p>
             </div>
             <div class="grid-item">
                 <h2>Money Saved</h2>
                 <p id="total-money-saved">£0.00</p>
-            </div>
-            <!-- Second row with 2 columns -->
+            </div> 
             <div class="grid-item">
                 <h2>Installation Schedule/History</h2>
                 <p id="installation-history">No installations scheduled.</p>
