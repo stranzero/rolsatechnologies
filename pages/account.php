@@ -1,6 +1,15 @@
 <?php
 include_once("../includes/header.php");
+session_start();
+// Check if the user is logged in
+if (isset($_SESSION["UserID"])) {
+    $userID = $_SESSION["UserID"];
+} else {
+    header("location: login.php");
+    exit;
+}
 ?>
+    
 
 <main class="container">
     <section class="page-header">
@@ -11,7 +20,7 @@ include_once("../includes/header.php");
     <section class="account-section">
         <div class="grid-container">
             <div class="grid-item">
-                <h2>Carbon Reduction</h2>
+                <h2>Personal Carbon Trajectory</h2>
                 <p id="trajectory">0 kg</p>
             </div>
             <div class="grid-item">
@@ -25,6 +34,11 @@ include_once("../includes/header.php");
             <div class="grid-item">
                 <h2>Consultation Schedule/History</h2>
                 <p id="consultation-history">No consultations scheduled.</p>
+            </div>
+            <div class="grid-item">
+                <h2>Account Functions</h2>
+                <p><a href="../src/delete_account.php" class="btn btn-primary">Delete Account</a></p>
+                <p><a href="../src/logout.php" class="btn btn-secondary">Logout</a></p>
             </div>
         </div>
     </section>

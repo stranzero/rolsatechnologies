@@ -253,6 +253,6 @@ function carbonTrajectory() {
 
     const trajectoryText = document.getElementById('trajectory');
     if (trajectoryText) {
-        trajectoryText.innerText = `${trajectoryValue <= 0 ? '+' : '-'}${Math.abs(trajectoryValue).toFixed(2)}%`;
+        trajectoryText.innerText = `${trajectoryValue.toFixed(2)}%`; 
     }
 }

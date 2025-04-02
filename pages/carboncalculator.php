@@ -1,39 +1,36 @@
 <?php
-include_once("../includes/header.php");
+require_once("../includes/header.php");
+require_once("../src/db.php");
+session_start();
 
-$totalCarbonFootprint = 0;
-$carbonTrajectory = +0;
-
-// carbonFootprintHistory = [
-    //     {
-    //         date: '2021-09-01',
-    //         emissions: 65
-    //     },
-    //     {
-    //         date: '2021-09-02',
-    //         emissions: 59
-    //     },
-    //     ...
-    // ]
-class CarbonFootprintData
-{
-    public $date;
-    public $emissions;
-
-    public function __construct($date, $emissions)
-    {
-        $this->date = $date;
-        $this->emissions = $emissions;
-    }
+// Check if the user is logged in
+if (!isset($_SESSION["UserID"])) {
+    header("Location: ../pages/login.php");
+    exit;
 }
-// Temporary Data for Carbon Footprint - This will be replaced by data from mysql database when we implement it
-$Data1 = new CarbonFootprintData('2021-09-01', 65);
-$Data2 = new CarbonFootprintData('2021-09-02', 59);
-$Data3 = new CarbonFootprintData('2021-09-03',20);
 
-$carbonFootprintData = array($Data1, $Data2, $Data3);
-// send data to local storage
-echo "<script>localStorage.setItem('carbonFootprintData', JSON.stringify(" . json_encode($carbonFootprintData) . "))</script>";
+$userID = $_SESSION["UserID"];
+
+// fetch AllRecords and the emissions from the database
+$sql = "SELECT AllRecords, TotalEmissions FROM carbonfootprint WHERE UserID = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $userID);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$carbonFootprintData = [];
+$totalCarbonFootprint = 0;
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $carbonFootprintData = json_decode($row['AllRecords'], true); // Decode JSON to PHP array
+    $totalCarbonFootprint = $row['TotalEmissions'];
+}
+
+$stmt->close();
+$conn->close();
+
+// Pass the data to JavaScript so that the graph can be created
+echo "<script>const carbonFootprintData = " . json_encode($carbonFootprintData) . ";</script>";
 ?>
 
 <main class="container">
@@ -55,15 +52,15 @@ echo "<script>localStorage.setItem('carbonFootprintData', JSON.stringify(" . jso
             <div class="scrollcontainer-wrapper">
                 <h2>Input Emissions</h2>
                 <div class="scrollcontainer">
-                    <form action="<?php echo $base_path; ?>src/carboncalculator.php" method="post">
+                    <form action="../src/carboncalculator.php" method="post">
                         <h3>Electricity</h3>
-                        <input type="number" id="electricity-emissions" placeholder="Enter Electricity Emissions (kg CO2e)">
+                        <input type="number" id="electricity-emissions" name="electricityEmissions" placeholder="Enter Electricity Emissions (kg CO2e)">
                         <h3>Transport</h3>
-                        <input type="number" id="transport-emissions" placeholder="Enter Transport Emissions (kg CO2e)">
+                        <input type="number" id="transport-emissions" name="transportEmissions" placeholder="Enter Transport Emissions (kg CO2e)">
                         <h3>Food</h3>
-                        <input type="number" id="food-emissions" placeholder="Enter Food Emissions (kg CO2e)">
+                        <input type="number" id="food-emissions" name="foodEmissions" placeholder="Enter Food Emissions (kg CO2e)">
                         <h3>Waste</h3>
-                        <input type="number" id="waste-emissions" placeholder="Enter Waste Emissions (kg CO2e)">
+                        <input type="number" id="waste-emissions" name="wasteEmissions" placeholder="Enter Waste Emissions (kg CO2e)">
                 </div>
                 <div class="scrollcontainer-actions">
                     <button id="add-emissions" class="btn btn-primary" type="submit">Add</button>
@@ -76,7 +73,19 @@ echo "<script>localStorage.setItem('carbonFootprintData', JSON.stringify(" . jso
             <h2>Emissions History</h2>
             <!-- Chart will be added here -->
             <canvas id="emissions-chart"></canvas>
+        </div>
     </div>
 </main>
+
+<script>
+    // Save carbonFootprintData to local storage
+    if (carbonFootprintData) {
+        localStorage.setItem('carbonFootprintData', JSON.stringify(carbonFootprintData));
+    }
+
+    console.log('Saved to localStorage:', JSON.parse(localStorage.getItem('carbonFootprintData')));
+</script>
+
 <?php
-include_once("../includes/footer.php"); ?>
+include_once("../includes/footer.php");
+?>
