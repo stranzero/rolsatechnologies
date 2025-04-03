@@ -60,7 +60,7 @@ echo "<script>const energyUsageData = " . json_encode($energyUsageData) . ";</sc
 
         <div class="grid-item small">
             <h2>Energy Usage History</h2>
-            <!-- Chart will be added here -->
+            <!-- Chart will be added here in javascript cuz we gonna use chart.js -->
             <canvas id="energy-usage-chart"></canvas>
         </div>
     </div>

@@ -219,7 +219,7 @@ function totalEnergyMoneySaved() {
     if (!energyUsageData) return;
 
     const energyUsage = JSON.parse(energyUsageData);
-    if (energyUsage.length < 2) return; // Ensure there are at least two data points
+    if (energyUsage.length < 2) return; 
 
     const lastUsage = energyUsage[energyUsage.length - 2].energyUsage;
     const newestUsage = energyUsage[energyUsage.length - 1].energyUsage;

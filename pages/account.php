@@ -33,7 +33,6 @@ if (isset($_SESSION["UserID"])) {
             </div>
             <div class="grid-item">
                 <h2>Consultation Schedule/History</h2>
-                <p id="consultation-history">No consultations scheduled.</p>
             </div>
             <div class="grid-item">
                 <h2>Account Functions</h2>
