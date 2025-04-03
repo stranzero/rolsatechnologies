@@ -8,7 +8,7 @@ include_once("../includes/header.php");
         <p>Welcome back! Please log in to your account.</p>
     </section>
 
-    <div class="login-gridcontainer">
+    <div class="    ">
         <div class="login-griditem">
             <h2>Log in</h2>
             <form class="login-form" action="<?php echo $base_path; ?>src/login.php" method="post">

@@ -3,7 +3,7 @@ include_once("../includes/header.php");
 require_once("../src/db.php");
 session_start();
 
-// Check if the user is logged in
+// we check here if the user is logged in
 if (!isset($_SESSION["UserID"])) {
     header("Location: ../pages/login.php");
     exit;

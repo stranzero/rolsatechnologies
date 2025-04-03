@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     scheduleForm();
     totalEnergyMoneySaved();
     carbonTrajectory();
+    
 });
 
 // Energy Usage Tracker

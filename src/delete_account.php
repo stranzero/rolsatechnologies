@@ -2,7 +2,7 @@
 include_once("db.php");
 session_start();
 
-// Check if the user is logged in
+// we check here if the user is logged in
 if (!isset($_SESSION["UserID"])) {
     error_log("UserID is not set in the session. Redirecting to login.");
     header("Location: ../pages/login.php");

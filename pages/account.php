@@ -1,7 +1,7 @@
 <?php
 include_once("../includes/header.php");
 session_start();
-// Check if the user is logged in
+// we check here if the user is logged in
 if (isset($_SESSION["UserID"])) {
     $userID = $_SESSION["UserID"];
 } else {

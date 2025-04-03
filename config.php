@@ -19,7 +19,5 @@ function getBasePath() {
 
     return str_repeat('../', $depth); 
 }
-
-
 ?>
 
