@@ -28,11 +28,8 @@ if (isset($_SESSION["UserID"])) {
                 <p id="total-money-saved">£0.00</p>
             </div> 
             <div class="grid-item">
-                <h2>Installation Schedule/History</h2>
-                <p id="installation-history">No installations scheduled.</p>
-            </div>
-            <div class="grid-item">
-                <h2>Consultation Schedule/History</h2>
+                <h2>Appointments</h2>
+                <p><a href="../src/schedule.php" class="btn btn-primary">View Appointments</a></p>
             </div>
             <div class="grid-item">
                 <h2>Account Functions</h2>

@@ -18,6 +18,9 @@ $stmt->execute();
 $stmt->close();
 $conn->close();
 
+$_SESSION = array(); // clear session variables
+session_destroy(); // destroy the session
+
 
 // clear local storage
 echo "<script>

@@ -15,7 +15,7 @@ $result = $stmt->get_result();
 $row = $result->fetch_assoc();
 $stmt->close();
 if ($row) {
-    // Verify the password
+    // we need to unhash the password here as we hashed it when the user registered
     if (password_verify($password, $row['Password'])) {
         // Start session and set session variables
         session_start();
@@ -26,7 +26,8 @@ if ($row) {
         die("Invalid password.");
     }
 } else {
-    die("User not found.");
+    header("Location: ../pages/login.php?error=User not found.");
+    exit;
 }
 
 ?>
