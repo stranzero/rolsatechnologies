@@ -11,7 +11,7 @@ ini_set('display_startup_errors', 1);
 // Get Base Path for assets
 function getBasePath() {
     $path = trim(dirname($_SERVER['PHP_SELF']), '/'); 
-    $depth = substr_count($path, '/'); // 
+    $depth = substr_count($path, '/'); 
 
     if ($depth == 0) {
         return './'; 
