@@ -71,8 +71,6 @@ echo "<script>const energyUsageData = " . json_encode($energyUsageData) . ";</sc
     if (energyUsageData) {
         localStorage.setItem('energyUsageData', JSON.stringify(energyUsageData));
     }
-
-    // Example: Log the data from local storage to verify
     console.log('Saved to localStorage:', JSON.parse(localStorage.getItem('energyUsageData')));
 </script>
 
